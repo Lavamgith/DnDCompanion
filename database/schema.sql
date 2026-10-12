@@ -1,96 +1,62 @@
-CREATE TABLE IF NOT EXISTS `Account` (
-	`accountID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`username` VARCHAR(255),
-	`email` VARCHAR(255),
-	`password` VARCHAR(255),
-	`dateCreated` DATETIME,
-	PRIMARY KEY(`accountID`)
+CREATE TABLE Ruleset (
+    rulesetID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    description VARCHAR(255),
+    PRIMARY KEY (rulesetID)
 );
 
-
-CREATE TABLE IF NOT EXISTS `Character` (
-	`characterID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`accountID` INTEGER,
-	`rulesetID` INTEGER,
-	`classID` INTEGER,
-	`name` VARCHAR(255),
-	`race` VARCHAR(255),
-	`level` INTEGER,
-	PRIMARY KEY(`characterID`)
+CREATE TABLE Classes (
+    classID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    hitDiceDie VARCHAR(255),
+    primaryAbility VARCHAR(255),
+    armorTraining VARCHAR(255),
+    description TEXT,
+    PRIMARY KEY (classID)
 );
 
-
-CREATE TABLE IF NOT EXISTS `Ruleset` (
-	`rulesetID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255),
-	`description` VARCHAR(255),
-	PRIMARY KEY(`rulesetID`)
+CREATE TABLE Rules (
+    tabID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    rulesetID INT UNSIGNED,
+    parentTabID INT UNSIGNED,
+    title VARCHAR(255),
+    content TEXT,
+    PRIMARY KEY (tabID),
+    FOREIGN KEY (rulesetID) REFERENCES Ruleset(rulesetID),
+    FOREIGN KEY (parentTabID) REFERENCES Tab(tabID),
+    FULLTEXT (title, content)
 );
 
-
-CREATE TABLE IF NOT EXISTS `Tab` (
-	`tabID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`rulesetID` INTEGER,
-	`parentTabID` INTEGER,
-	`title` VARCHAR(255),
-	`content` TEXT(65535),
-	PRIMARY KEY(`tabID`)
+CREATE TABLE Spell (
+    spellID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    rulesetID INT UNSIGNED,
+    name VARCHAR(255),
+    level INT,
+    school VARCHAR(50),
+    castingTime VARCHAR(255),
+    spellRange VARCHAR(100),
+    components VARCHAR(255),
+    duration VARCHAR(100),
+    description TEXT,
+    higherLevel TEXT,
+    PRIMARY KEY (spellID),
+    FOREIGN KEY (rulesetID) REFERENCES Ruleset(rulesetID),
+    FULLTEXT (name, description)
 );
 
-
-CREATE TABLE IF NOT EXISTS `Dice` (
-	`rollID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`characterID` INTEGER,
-	`diceType` VARCHAR(255),
-	`result` INTEGER,
-	`karmicMod` INTEGER,
-	`rollDate` DATETIME,
-	PRIMARY KEY(`rollID`)
+CREATE TABLE SpellClass (
+    spellID INT UNSIGNED,
+    classID INT UNSIGNED,
+    PRIMARY KEY (spellID, classID),
+    FOREIGN KEY (spellID) REFERENCES Spell(spellID),
+    FOREIGN KEY (classID) REFERENCES Classes(classID)
 );
 
-
-CREATE TABLE IF NOT EXISTS `Stats` (
-	`statsID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`characterID` INTEGER,
-	`strength` INTEGER,
-	`dexterity` INTEGER,
-	`constitution` INTEGER,
-	`intelligence` INTEGER,
-	`wisdom` INTEGER,
-	`charisma` INTEGER,
-	PRIMARY KEY(`statsID`)
+CREATE TABLE Dice (
+    rollID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    diceType VARCHAR(255),
+    result INT,
+    karmicMod INT,
+    rollDate DATETIME,
+    PRIMARY KEY (rollID)
 );
-
-
-CREATE TABLE IF NOT EXISTS `Classes` (
-	`classID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255),
-	`hitDiceDie` VARCHAR(255),
-	`primaryAbility` VARCHAR(255),
-	`armorTraining` VARCHAR(255),
-	`description` TEXT(65535),
-	PRIMARY KEY(`classID`)
-);
-
-
-ALTER TABLE `Character`
-ADD FOREIGN KEY(`accountID`) REFERENCES `Account`(`accountID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Character`
-ADD FOREIGN KEY(`rulesetID`) REFERENCES `Ruleset`(`rulesetID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Tab`
-ADD FOREIGN KEY(`rulesetID`) REFERENCES `Ruleset`(`rulesetID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Dice`
-ADD FOREIGN KEY(`characterID`) REFERENCES `Character`(`characterID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Stats`
-ADD FOREIGN KEY(`characterID`) REFERENCES `Character`(`characterID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Tab`
-ADD FOREIGN KEY(`parentTabID`) REFERENCES `Tab`(`tabID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `Character`
-ADD FOREIGN KEY(`classID`) REFERENCES `Classes`(`classID`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
