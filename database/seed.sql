@@ -1,57 +1,86 @@
+-- MySQL dump 10.13  Distrib 8.4.11, for Win64 (x86_64)
+--
+-- Host: mysql-2eb9aece-dndcompanion-1234.a.aivencloud.com    Database: defaultdb
+-- ------------------------------------------------------
+-- Server version	8.4.8
 
--- D&D 2024 Ruleset
-INSERT INTO Ruleset (name, description)
-VALUES (
-    'D&D 2024',
-    'Dungeons & Dragons 2024 ruleset'
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+--
+-- Dumping data for table `Classes`
+--
 
+LOCK TABLES `Classes` WRITE;
+/*!40000 ALTER TABLE `Classes` DISABLE KEYS */;
+INSERT INTO `Classes` VALUES (1,'Barbarian','d12','Strength','Light and Medium armor and Shields','A warrior who channels primal power through Rage.'),(2,'Bard','d8','Charisma','Light armor','A versatile performer who uses magic to inspire and hinder.'),(3,'Cleric','d8','Wisdom','Light and Medium armor and Shields','A divine spellcaster who heals, protects, and battles foes.'),(4,'Druid','d8','Wisdom','Light and Medium armor and Shields','A nature-focused spellcaster who channels primal magic.'),(5,'Fighter','d10','Strength or Dexterity','Light, Medium, and Heavy armor and Shields','A skilled combatant trained in weapons and armor.'),(6,'Monk','d8','Dexterity and Wisdom','None','A martial artist who uses discipline and focused inner power.'),(7,'Paladin','d10','Strength and Charisma','Light, Medium, and Heavy armor and Shields','A warrior bound by a sacred oath who combines combat and magic.'),(8,'Ranger','d10','Dexterity and Wisdom','Light and Medium armor and Shields','A wilderness warrior skilled in exploration and combat.'),(9,'Rogue','d8','Dexterity','Light armor','A cunning adventurer who relies on stealth and precision.'),(10,'Sorcerer','d6','Charisma','None','A spellcaster whose magic comes from an innate supernatural source.'),(11,'Warlock','d8','Charisma','Light armor','A spellcaster who gains magical power through a pact with a patron.'),(12,'Wizard','d6','Intelligence','None','A spellcaster who studies and learns arcane magic.');
+/*!40000 ALTER TABLE `Classes` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- D&D 2024 Classes
-INSERT INTO Classes
-    (name, hitDiceDie, primaryAbility, armorTraining, description)
-VALUES
-('Barbarian', 'd12', 'Strength', 'Light and Medium armor and Shields',
- 'A fierce warrior who draws on primal power and rage to fight.'),
-('Bard', 'd8', 'Charisma', 'Light armor and Shields',
- 'A versatile spellcaster who uses music, magic, and inspiration.'),
-('Cleric', 'd8', 'Wisdom', 'Light and Medium armor and Shields',
- 'A spellcaster who draws on divine power to support allies and battle foes.'),
-('Druid', 'd8', 'Wisdom', 'Light armor and Shields',
- 'A nature-focused spellcaster with the ability to harness natural magic.'),
-('Fighter', 'd10', 'Strength or Dexterity', 'Light, Medium, and Heavy armor and Shields',
- 'A skilled martial combatant trained to use a wide variety of weapons and armor.'),
-('Monk', 'd8', 'Dexterity and Wisdom', 'None',
- 'A martial artist who uses disciplined training and supernatural abilities in combat.'),
-('Paladin', 'd10', 'Strength and Charisma', 'Light, Medium, and Heavy armor and Shields',
- 'A holy warrior who combines martial skill with divine magic.'),
-('Ranger', 'd10', 'Dexterity and Wisdom', 'Light and Medium armor and Shields',
- 'A martial adventurer skilled at surviving in the wilderness and fighting chosen foes.'),
-('Rogue', 'd8', 'Dexterity', 'Light armor',
- 'A skilled adventurer who relies on stealth, precision, and cunning.'),
-('Sorcerer', 'd6', 'Charisma', 'None',
- 'A spellcaster whose magic comes from an innate or supernatural source.'),
-('Warlock', 'd8', 'Charisma', 'Light armor',
- 'A spellcaster who gains magical power through a pact with a powerful being.'),
-('Wizard', 'd6', 'Intelligence', 'None',
- 'A scholarly spellcaster who learns and prepares spells through study and arcane knowledge.');
+--
+-- Dumping data for table `Dice`
+--
 
+LOCK TABLES `Dice` WRITE;
+/*!40000 ALTER TABLE `Dice` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Dice` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dice sample rolls
-INSERT INTO Dice
-    (diceType, result, karmicMod, rollDate)
-VALUES
-('d20', 15, 0, '2026-09-19 10:30:00'),
-('d6', 4, 0, '2026-09-19 10:31:00'),
-('d20', 8, 1, '2026-09-19 10:35:00'),
-('d20', 19, 0, '2026-09-19 10:40:00'),
-('d8', 6, 0, '2026-09-19 10:41:00');
+--
+-- Dumping data for table `Rules`
+--
 
+LOCK TABLES `Rules` WRITE;
+/*!40000 ALTER TABLE `Rules` DISABLE KEYS */;
+INSERT INTO `Rules` VALUES (1,1,NULL,'Ability Check','A D20 Test using an ability or associated skill to overcome a challenge.'),(2,1,NULL,'Ability Score and Modifier','Creatures have six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma. The associated modifier is used when a rule calls for it.'),(3,1,NULL,'Action','On your turn, you can take one action, choosing an available action or one granted by a feature.'),(4,1,NULL,'Advantage','Roll two d20s for a test with Advantage and use the higher result. Advantage and Disadvantage cancel each other.'),(5,1,NULL,'Adventure','A series of encounters through which a story develops during play.'),(6,1,NULL,'Alignment','A broad description of a creature’s ethical outlook, combining morality and attitudes toward order.'),(7,1,NULL,'Ally','A creature considered on your side, such as a party member, friend, combat ally, or creature designated by the rules or GM.'),(8,1,NULL,'Area of Effect','An area affected by a spell or feature. Common shapes include cones, cubes, cylinders, emanations, lines, and spheres.'),(9,1,NULL,'Armor Class','The target number an attack roll must meet or exceed to hit. The usual base calculation is 10 plus the Dexterity modifier.'),(10,1,NULL,'Armor Training','Training lets a creature use armor or shields without the penalties that apply when lacking the appropriate training.'),(11,1,NULL,'Attack Roll','A D20 Test used to determine whether an attack with a weapon, Unarmed Strike, spell, or other effect hits.'),(12,1,NULL,'Attitude','A monster’s starting attitude toward a character is Friendly, Hostile, or Indifferent.'),(13,1,NULL,'Attunement','Some magic items require a creature to form a bond with them before using their magical properties. A creature can be attuned to at most three magic items at once.'),(14,1,NULL,'Bonus Action','A special action available on a turn when a rule or feature allows it. You can take no more than one Bonus Action per turn.'),(15,1,NULL,'Breaking Objects','Objects can be damaged by attacks and certain spells. Rules cover object Armor Class, Hit Points, damage types, and damage thresholds.'),(16,1,NULL,'Bright Light','Normal illumination that allows creatures to see as they ordinarily would.'),(17,1,NULL,'Burrow Speed','A special speed used to move through sand, earth, mud, or ice. Solid rock generally cannot be burrowed through without a specific trait.'),(18,1,NULL,'Campaign','A series of adventures.'),(19,1,NULL,'Cantrip','A level 0 spell that can be cast without expending a spell slot.'),(20,1,NULL,'Carrying Capacity','A creature’s size and Strength determine how much weight it can carry, drag, lift, or push.'),(21,1,NULL,'Challenge Rating','A rating that summarizes the threat a monster poses to a group of four player characters. Actual difficulty depends on the circumstances.'),(22,1,NULL,'Character Sheet','A paper or digital record used to track a character’s game information.'),(23,1,NULL,'Climb Speed','A special speed that allows a creature to climb without paying the normal extra movement cost.'),(24,1,NULL,'Climbing','Each foot of climbing normally costs one extra foot of movement, or two extra feet in Difficult Terrain. A Climb Speed can remove this extra cost.'),(25,1,NULL,'Condition','A temporary game state that affects a creature. Each condition describes its effects and how it can end.'),(26,1,NULL,'Cone [Area of Effect]','An area that extends in straight lines from an origin in a chosen direction. Its width increases with distance from the origin, and the effect specifies its maximum length.'),(27,1,NULL,'Cover','Protection from an obstacle that grants Half Cover, Three-Quarters Cover, or Total Cover, each providing different defensive benefits.'),(28,1,NULL,'Crawling','Each foot of movement while crawling costs one extra foot, or two extra feet in Difficult Terrain.'),(29,1,NULL,'Creature','Any being in the game, including a player character.'),(30,1,NULL,'Creature Type','A rules tag identifying a creature as an Aberration, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, or Undead.'),(31,1,NULL,'Critical Hit','Rolling a 20 on the d20 for an attack roll scores a Critical Hit. The attack hits, and its damage dice are rolled twice before applicable modifiers are added.'),(32,1,NULL,'Cube [Area of Effect]','An area of effect extending from an origin on one face of a cube. The effect specifies the cube’s size, and the origin is normally excluded unless its creator decides otherwise.');
+/*!40000 ALTER TABLE `Rules` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Rules sample entries
-INSERT INTO Rules
-    (rulesetID, parentTabID, title, content)
-VALUES
-(1, NULL, 'Classes', 'Overview of all playable classes.'),
-(1, NULL, 'Races', 'Overview of all playable races.'),
-(1, NULL, 'Spells', 'Overview of the spell system.');
+--
+-- Dumping data for table `Ruleset`
+--
+
+LOCK TABLES `Ruleset` WRITE;
+/*!40000 ALTER TABLE `Ruleset` DISABLE KEYS */;
+INSERT INTO `Ruleset` VALUES (1,'D&D 2024','Dungeons & Dragons 2024 ruleset');
+/*!40000 ALTER TABLE `Ruleset` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `Spell`
+--
+
+LOCK TABLES `Spell` WRITE;
+/*!40000 ALTER TABLE `Spell` DISABLE KEYS */;
+INSERT INTO `Spell` VALUES (1,1,'Acid Splash',0,'Evocation','Action','60 feet','V, S','Instantaneous','Creates an acidic bubble that bursts in a 5-foot-radius Sphere. Creatures in the area make a Dexterity saving throw or take 1d6 Acid damage.','Damage increases by 1d6 at character levels 5, 11, and 17.',0),(2,1,'Aid',2,'Abjuration','Action','30 feet','V, S, M (strip of white cloth)','8 hours','Increases up to three creatures’ current Hit Points and Hit Point maximum by 5 for 8 hours.','Each target’s Hit Point maximum increases by an additional 5 for each spell slot level above 2.',0),(3,1,'Alarm',1,'Abjuration','1 minute or Ritual','30 feet','V, S, M (bell and silver wire)','8 hours','Wards a door, window, or area and alerts you when a creature enters or touches it. The alarm can be audible or mental.',NULL,0),(4,1,'Alter Self',2,'Transmutation','Action','Self','V, S','Concentration, up to 1 hour','Changes your physical form, allowing aquatic adaptation, changes to your appearance, or natural weapons.',NULL,1),(5,1,'Animal Friendship',1,'Enchantment','Action','30 feet','V, S, M (morsel of food)','24 hours','Attempts to Charm a Beast that fails a Wisdom saving throw. The spell ends early if you or an ally damages it.','You can target one additional Beast for each spell slot level above 1.',0),(6,1,'Animal Messenger',2,'Enchantment','Action or Ritual','30 feet','V, S, M (morsel of food)','24 hours','Sends a Tiny Beast to deliver a spoken message of up to 25 words to a specified recipient.','Duration increases by 48 hours for each spell slot level above 2.',0),(7,1,'Animal Shapes',8,'Transmutation','Action','30 feet','V, S','24 hours','Transforms willing creatures into chosen Large or smaller Beasts with a Challenge Rating of 4 or lower.',NULL,0),(8,1,'Animate Dead',3,'Necromancy','1 minute','10 feet','V, S, M (blood, flesh, bone dust)','Instantaneous','Animates a pile of bones or a Small or Medium Humanoid corpse as a Skeleton or Zombie that you can command.','Animate or reassert control over two additional Undead for each spell slot level above 3.',0),(9,1,'Animate Objects',5,'Transmutation','Action','120 feet','V, S','Concentration, up to 1 minute','Animates eligible nonmagical objects into Constructs that fight under your control.','The creature’s Slam damage increases by 1d4 (Medium or smaller), 1d6 (Large), or 1d12 (Huge) for each spell slot level above 5.',1),(10,1,'Antilife Shell',5,'Abjuration','Action','Self','V, S','Concentration, up to 1 hour','Creates a 10-foot aura that prevents most living creatures from passing through it.',NULL,1),(11,1,'Antimagic Field',8,'Abjuration','Action','Self','V, S, M (iron filings)','Concentration, up to 1 hour','Creates a 10-foot aura that suppresses magic and prevents many magical effects within it.',NULL,1),(12,1,'Antipathy/Sympathy',8,'Enchantment','1 hour','60 feet','V, S, M (a mix of vinegar and honey)','10 days','Makes a chosen creature type fear or feel drawn toward a chosen creature or object.',NULL,0),(13,1,'Arcane Eye',4,'Divination','Action','30 feet','V, S, M (a bit of bat fur)','Concentration, up to 1 hour','Creates an invisible, invulnerable magical eye that lets you see remotely.',NULL,1),(14,1,'Arcane Lock',2,'Abjuration','Action','Touch','V, S, M (gold dust worth 25+ GP, consumed)','Until dispelled','Magically locks a closed door, window, gate, container, or hatch.',NULL,0),(15,1,'Astral Projection',9,'Necromancy','1 hour','10 feet','V, S, M (jacinth worth 1,000+ GP and silver bar worth 100+ GP per target, consumed)','Until dispelled','Projects you and willing creatures into the Astral Plane while your bodies remain behind.',NULL,0),(16,1,'Augury',2,'Divination','1 minute or Ritual','Self','V, S, M (divinatory tokens worth 25+ GP)','Instantaneous','Provides an omen about the likely results of a planned course of action within the next 30 minutes.',NULL,0),(17,1,'Aura of Life',4,'Abjuration','Action','Self (30-foot emanation)','V','Concentration, up to 10 minutes','An aura radiates from you in a 30-foot Emanation. You and your allies in the aura have Resistance to Necrotic damage, and your Hit Point maximums cannot be reduced. If an ally with 0 Hit Points starts its turn in the aura, it regains 1 Hit Point.',NULL,1),(18,1,'Awaken',5,'Transmutation','8 hours','Touch','V, S, M (an agate worth 1,000+ GP, consumed)','Instantaneous','Awakens a Beast or Plant with Intelligence 3 or less, or a natural plant, granting Intelligence 10 and the ability to speak one language you know. An awakened natural plant becomes a Plant creature and gains the ability to move and humanlike senses.',NULL,0),(19,1,'Bane',1,'Enchantment','Action','30 feet','V, S, M (a drop of blood)','Concentration, up to 1 minute','Up to three creatures make Charisma saving throws. On a failure, a target subtracts 1d4 from its attack rolls and saving throws.','You can target one additional creature for each spell slot level above 1.',1),(20,1,'Banishment',4,'Abjuration','Action','30 feet','V, S, M (a pentacle)','Concentration, up to 1 minute','A creature that fails a Charisma saving throw is transported to a harmless demiplane and has the Incapacitated condition for the duration.','You can target one additional creature for each spell slot level above 4.',1),(21,1,'Barkskin',2,'Transmutation','Bonus Action','Touch','V, S, M (a handful of bark)','1 hour','The willing creature you touch has an Armor Class of 17 if its AC would otherwise be lower.',NULL,0),(22,1,'Beacon of Hope',3,'Abjuration','Action','30 feet','V, S','Concentration, up to 1 minute','Chosen creatures have Advantage on Wisdom saving throws and Death Saving Throws and regain the maximum possible Hit Points from healing.',NULL,1),(23,1,'Befuddlement',8,'Enchantment','Action','150 feet','V, S, M (a key ring with no keys)','Instantaneous','Blasts the mind of a creature. On a failed Intelligence saving throw, it takes 10d12 Psychic damage and cannot cast spells or take the Magic action. The target repeats the save every 30 days, and Greater Restoration, Heal, or Wish can end the effect.',NULL,0),(24,1,'Bestow Curse',3,'Necromancy','Action','Touch','V, S','Concentration, up to 1 minute','Curses a creature that fails a Wisdom saving throw. Choose one of several effects that hinder the target.','A level 4 slot extends the duration to 10 minutes. A level 5–6 slot removes Concentration and gives a duration of 8 hours; a level 7–8 slot gives 24 hours; a level 9 slot lasts until dispelled.',1),(25,1,'Bigby\'s Hand',5,'Evocation','Action','120 feet','V, S, M (an eggshell and a glove)','1 minute','Creates a Large magical hand that you command to strike, push, grapple, crush, or protect you.','Clenched Fist damage increases by 2d8 and Grasping Hand damage increases by 2d6 for each spell slot level above 5.',0),(26,1,'Blade Barrier',6,'Evocation','Action','90 feet','V, S','Concentration, up to 10 minutes','Creates a wall of whirling magical blades that provides Three-Quarters Cover and damages creatures that enter or remain in its space.',NULL,1),(27,1,'Bless',1,'Enchantment','Action','30 feet','V, S, M (a Holy Symbol worth 5+ GP)','Concentration, up to 1 minute','Blesses up to three creatures, allowing them to add 1d4 to attack rolls and saving throws.','You can target one additional creature for each spell slot level above 1.',1),(28,1,'Blight',4,'Necromancy','Action','30 feet','V, S','Instantaneous','Deals Necrotic damage to a creature that fails a Constitution saving throw. Plant creatures automatically fail; nonmagical plants can wither and die.','Damage increases by 1d8 for each spell slot level above 4.',0),(29,1,'Blindness/Deafness',2,'Transmutation','Action','120 feet','V','1 minute','A creature that fails a Constitution saving throw becomes Blinded or Deafened. It can repeat the save at the end of each of its turns.','You can target one additional creature for each spell slot level above 2.',0),(30,1,'Blink',3,'Transmutation','Action','Self','V, S','1 minute','You intermittently vanish from your current plane and appear in the Ethereal Plane, returning at the start of your next turn.',NULL,0),(31,1,'Blur',2,'Illusion','Action','Self','V','Concentration, up to 1 minute','Blurs your appearance, giving creatures Disadvantage on attack rolls against you unless they perceive you with Blindsight or Truesight.',NULL,1),(32,1,'Burning Hands',1,'Evocation','Action','Self (15-foot cone)','V, S','Instantaneous','Projects a sheet of flame in a 15-foot Cone, dealing Fire damage to creatures that fail a Dexterity saving throw.','Damage increases by 1d6 for each spell slot level above 1.',0);
+/*!40000 ALTER TABLE `Spell` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `SpellClass`
+--
+
+LOCK TABLES `SpellClass` WRITE;
+/*!40000 ALTER TABLE `SpellClass` DISABLE KEYS */;
+INSERT INTO `SpellClass` VALUES (9,2),(12,2),(18,2),(19,2),(23,2),(24,2),(29,2),(11,3),(15,3),(16,3),(17,3),(19,3),(20,3),(22,3),(24,3),(26,3),(27,3),(29,3),(10,4),(12,4),(16,4),(18,4),(21,4),(23,4),(28,4),(17,7),(20,7),(27,7),(21,8),(9,10),(20,10),(25,10),(28,10),(29,10),(30,10),(31,10),(32,10),(15,11),(19,11),(20,11),(23,11),(25,11),(28,11),(9,12),(11,12),(12,12),(13,12),(14,12),(15,12),(16,12),(20,12),(23,12),(24,12),(25,12),(28,12),(29,12),(30,12),(31,12),(32,12);
+/*!40000 ALTER TABLE `SpellClass` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-10-12 12:15:42
+
